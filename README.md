@@ -40,7 +40,7 @@ https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo/L/Regula
 
 ### Creating custom powerlines ###
 
-https://ohmyposh.dev/docs/https://ohmyposh.dev/docs/
+[Docs](https://ohmyposh.dev/docs/)
 
 Existing themes located at: C:\Users\Werner\Documents\PowerShell\Modules\oh-my-posh\3.144.0\themes
 
