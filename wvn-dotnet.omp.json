@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+		  "type": "dotnet",
+		  "style": "diamond",
+		  "powerline_symbol": "\uE0B0",
+		  "foreground": "#000000",
+		  "background": "#00e600",
+		  "leading_diamond": "\uE0B6",
+		  "trailing_diamond": "\uE0B0",
+		  "display_mode": "always",
+		  "properties": {
+			"prefix": " v"
+		  }
+		},
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#ffffff",
+          "background": "#0000ff",
+          "properties" : {
+              "home_icon": "\uF7DB",
+              "folder_icon": "\uF115",
+              "folder_separator_icon": " \uE0B1 ",
+              "style": "full"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#193549",
+          "background": "#fffb38"
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "exit",
+          "style": "diamond",
+          "leading_diamond": "\ue0c2",
+          "trailing_diamond": "\ue0c0",
+          "foreground": "#ffffff",
+          "background": "#ff4040",
+          "properties": {
+            "display_exit_code": false,
+            "always_enabled": false,
+            "prefix": " \ue70f"
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "diamond",
+          "foreground": "#fafafa",
+          "background": "#2f2f2f",
+          "leading_diamond": "\ue0b2",
+          "properties": {
+            "style": "houston"
+          }
+        }
+      ]
+    }
+  ],
+  "final_space": true
+}
