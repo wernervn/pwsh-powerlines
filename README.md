@@ -51,6 +51,9 @@ Get-PoshThemes
 Add custom theme file in ~/, edit, then run ```. $profile``` to reload profile and custom theme.
 
 ### Extras ###
-#### Markdown table generator ####
-[How to Easily Format Tables in Markdown](https://ardalis.com/how-to-easily-format-tables-in-markdown/)
+
+**1. Markdown table generator**
+
+[How to Easily Format Tables in Markdown](https://ardalis.com/how-to-easily-format-tables-in-markdown)
+
 [Tables Generator](https://www.tablesgenerator.com/markdown_tables)
