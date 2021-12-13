@@ -34,6 +34,15 @@ Add the following to $Home\[My ]Documents\PowerShell\Microsoft.PowerShell_profil
 ```powershell
 Set-PoshPrompt -Theme ~/.wvn.omp.json
 ```
+### (Alternative) Install using choco ###
+Taken from:[Setup your terminal](https://ohmyposh.dev/docs/windows)
+```powershell
+choco install oh-my-posh
+```
+In the powershell init file, add the following command:
+```powershell
+oh-my-posh --init --shell pwsh --config ~/wvn-dotnetV2.omp.json | Invoke-Expression
+```
 
 ### Install Nerd Font ###
 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo/L/Regular
