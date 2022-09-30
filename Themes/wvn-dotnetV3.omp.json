@@ -2,77 +2,80 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
-      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "type": "dotnet",
-          "style": "diamond",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#000000",
           "background": "#ffff00",
-          "properties": {
-            "display_mode": "always",
-            "prefix": " v"
-          }
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#ffffff",
-          "background": "#0000ff",
-          "properties" : {
-            "prefix": " \uE5FF ",
-            "style": "full"
-          }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
           "foreground": "#000000",
-          "background": "#49eb34",
+          "powerline_symbol": "\ue0b0",
           "properties": {
-              "display_upstream_icon": true,
-			  "status_colors_enabled": true,
-			  "local_changes_color": "#99e6ff",
-			  "ahead_and_behind_color": "#f50505",
-			  "behind_color": "#f505c9",
-			  "ahead_color": "#ffff00"
-          }
+            "display_mode": "always"
+          },
+          "style": "diamond",
+          "template": " v{{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
+          "type": "dotnet"
+        },
+        {
+          "background": "#0000ff",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "style": "full"
+          },
+          "style": "powerline",
+          "template": " \ue5ff {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "background": "#49eb34",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#99e6ff{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#f50505{{ end }}",
+            "{{ if gt .Ahead 0 }}#f505c9{{ end }}",
+            "{{ if gt .Behind 0 }}#ffff00{{ end }}"
+          ],
+          "foreground": "#000000",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "fetch_upstream_icon": true
+          },
+          "style": "powerline",
+          "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} ",
+          "type": "git"
         }
-      ]
+      ],
+      "type": "prompt"
     },
     {
-      "type": "rprompt",
       "alignment": "right",
       "segments": [
         {
-          "type": "exit",
-          "style": "diamond",
-          "leading_diamond": "\ue0c2",
-          "trailing_diamond": "\ue0c0",
-          "foreground": "#ffffff",
           "background": "#ff4040",
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0c2",
           "properties": {
-            "display_exit_code": false,
-            "always_enabled": false,
-            "prefix": " \ue70f"
-          }
+            "always_enabled": false
+          },
+          "style": "diamond",
+          "template": " \ue70f{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} ",
+          "trailing_diamond": "\ue0c0",
+          "type": "exit"
         },
         {
-          "type": "executiontime",
-          "style": "diamond",
-          "foreground": "#fafafa",
           "background": "#2f2f2f",
+          "foreground": "#fafafa",
           "leading_diamond": "\ue0b2",
           "properties": {
             "style": "houston"
-          }
+          },
+          "style": "diamond",
+          "template": " {{ .FormattedMs }} ",
+          "type": "executiontime"
         }
-      ]
+      ],
+      "type": "rprompt"
     }
   ],
-  "final_space": true
+  "final_space": true,
+  "version": 2
 }

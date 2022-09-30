@@ -2,36 +2,31 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
-      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "type": "dotnet",
-          "style": "diamond",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#000000",
           "background": "#ffff00",
-          "properties": {
-            "display_mode": "always",
-            "prefix": " v"
-          }
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#3A86FF",
-          "background": "#242424",
-          "properties" : {
-            "prefix": " \uE5FF ",
-            "style": "full"
-          }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
           "foreground": "#000000",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "display_mode": "always"
+          },
+          "style": "diamond",
+          "template": " v{{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
+          "type": "dotnet"
+        },
+        {
+          "background": "#242424",
+          "foreground": "#3A86FF",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "style": "full"
+          },
+          "style": "powerline",
+          "template": " \ue5ff {{ .Path }} ",
+          "type": "path"
+        },
+        {
           "background": "#49eb34",
           "background_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#99E6FF{{ end }}",
@@ -39,45 +34,50 @@
             "{{ if gt .Ahead 0 }}#FFFF00{{ end }}",
             "{{ if gt .Behind 0 }}#F505C9{{ end }}"
           ],
+          "foreground": "#000000",
+          "powerline_symbol": "\ue0b0",
           "properties": {
-            "fetch_status": true,
             "fetch_stash_count": true,
-            "fetch_upstream_icon": true,
-            "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}",
-            "prefix": ""
-          }
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "style": "powerline",
+          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
+          "type": "git"
         }
-      ]
+      ],
+      "type": "prompt"
     },
     {
-      "type": "rprompt",
       "alignment": "right",
       "segments": [
         {
-          "type": "exit",
-          "style": "diamond",
-          "leading_diamond": "\ue0c2",
-          "trailing_diamond": "\ue0c0",
-          "foreground": "#ffffff",
           "background": "#ff4040",
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0c2",
           "properties": {
-            "display_exit_code": false,
-            "always_enabled": false,
-            "prefix": " \ue70f"
-          }
+            "always_enabled": false
+          },
+          "style": "diamond",
+          "template": " \ue70f{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} ",
+          "trailing_diamond": "\ue0c0",
+          "type": "exit"
         },
         {
-          "type": "executiontime",
-          "style": "diamond",
-          "foreground": "#fafafa",
           "background": "#2f2f2f",
+          "foreground": "#fafafa",
           "leading_diamond": "\ue0b2",
           "properties": {
             "style": "houston"
-          }
+          },
+          "style": "diamond",
+          "template": " {{ .FormattedMs }} ",
+          "type": "executiontime"
         }
-      ]
+      ],
+      "type": "rprompt"
     }
   ],
-  "final_space": true
+  "final_space": true,
+  "version": 2
 }
