@@ -29,9 +29,9 @@
         {
           "background": "#49eb34",
           "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#99E6FF{{ end }}",
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#ff8000{{ end }}",
             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#F50505{{ end }}",
-            "{{ if gt .Ahead 0 }}#FFFF00{{ end }}",
+            "{{ if gt .Ahead 0 }}#00ffff{{ end }}",
             "{{ if gt .Behind 0 }}#F505C9{{ end }}"
           ],
           "foreground": "#000000",
@@ -47,6 +47,14 @@
         }
       ],
       "type": "prompt"
+    },
+    {
+      "background": "#3a579b",
+      "foreground": "#ffffff",
+      "powerline_symbol": "\ue0b0",
+      "style": "powerline",
+      "template": " \uf1d2 {{ .MajorMinorPatch }} ",
+      "type": "gitversion"
     },
     {
       "alignment": "right",
